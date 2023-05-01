@@ -24,9 +24,25 @@ struct ContentView: View {
     @State private var scoreTitle = ""
     @State private var userScore = 0
     
+    // for accessibility
+    
+    let labels = [
+        "India" : "Flag with three horizontal stripes of equal size. Top stripe saffron, middle stripe white with navy blue Ashoka Chakra, which has 24 spokes and represents the wheel of law in center of it , bottom stripe green",
+        "Estonia": "Flag with three horizontal stripes of equal size. Top stripe blue, middle stripe black, bottom stripe white",
+                   "France": "Flag with three vertical stripes of equal size. Left stripe blue, middle stripe white, right stripe red",
+                   "Germany": "Flag with three horizontal stripes of equal size. Top stripe black, middle stripe red, bottom stripe gold",
+                   "Ireland": "Flag with three vertical stripes of equal size. Left stripe green, middle stripe white, right stripe orange",
+                   "Italy": "Flag with three vertical stripes of equal size. Left stripe green, middle stripe white, right stripe red",
+                   "Nigeria": "Flag with three vertical stripes of equal size. Left stripe green, middle stripe white, right stripe green",
+                   "Poland": "Flag with two horizontal stripes of equal size. Top stripe white, bottom stripe red",
+                   "Russia": "Flag with three horizontal stripes of equal size. Top stripe white, middle stripe blue, bottom stripe red",
+                   "Spain": "Flag with three horizontal stripes. Top thin stripe red, middle thick stripe gold with a crest on the left, bottom thin stripe red",
+                   "UK": "Flag with overlapping red and white crosses, both straight and diagonally, on a blue background",
+                   "US": "Flag with red and white stripes of equal size, with white stars on a blue background in the top-left corner"  ]
+    
     @State private var countries = [ "India", "Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"].shuffled()
     @State private var correctAnswer = Int.random(in: 0...2)
-    
+    @State private var number = Int.random(in: 0...11)
     @State private var spinAnimationAmounts = [0.0 , 0.0 , 0.0 ]
     @State private var animatingIncreaseScore = false
     
@@ -84,7 +100,8 @@ struct ContentView: View {
                 .padding(.vertical, 20)
                 .background(.regularMaterial)
                 .clipShape(RoundedRectangle(cornerRadius: 20))
-                
+                .accessibilityLabel(labels[countries[number], default: "Unknown flag"])
+
                 Spacer()
                 Spacer()
                 
